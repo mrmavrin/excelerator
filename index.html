@@ -24,7 +24,7 @@ body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;fon
 
 #pc{position:fixed;inset:0;z-index:0;pointer-events:none}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3.5rem;background:rgba(6,5,4,.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd)}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3.5rem;background:rgba(6,5,4,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
 .nlogo{display:flex;align-items:center;gap:.75rem}
 .nlogo img{width:32px;height:32px;object-fit:cover;border-radius:7px}
 .nlogo-txt{font-family:'Cormorant Garamond',serif;font-size:.9rem;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:600}
@@ -36,8 +36,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .lang-btn:hover{color:var(--gold-l)}
 .lang-btn.active{color:var(--gold);border-bottom:1px solid var(--gold)}
 .lang-div{font-size:.55rem;color:var(--text-dim);opacity:.5}
-.ntg{padding:.5rem 1.3rem;border:1px solid var(--bd2);font-size:.7rem;font-weight:700;letter-spacing:.12em;color:var(--gold-l);text-decoration:none;text-transform:uppercase;transition:all .3s}
-.ntg:hover{background:rgba(201,168,76,.1)}
+.nav-actions{display:flex;align-items:center;gap:.6rem}
+.nav-icon{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--bd2);text-decoration:none;transition:all .3s;position:relative;flex-shrink:0}
+.nav-icon:hover{border-color:var(--gold);background:rgba(201,168,76,.08)}
+.nav-icon-wa:hover{border-color:var(--gold);background:rgba(201,168,76,.08)}
+.nav-icon svg{display:block}
+.nav-icon-tooltip{position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);font-size:.52rem;letter-spacing:.1em;color:var(--gold-l);white-space:nowrap;background:rgba(6,5,4,.9);padding:.2rem .5rem;opacity:0;transition:opacity .25s;pointer-events:none;text-transform:uppercase;font-weight:600;border:1px solid var(--bd)}
+.nav-icon:hover .nav-icon-tooltip{opacity:1}
 
 /* ══ HERO ══ */
 .hero{background:var(--bg);min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 3.5rem;padding-top:80px;position:relative;overflow:hidden;z-index:2;gap:3rem}
@@ -109,6 +114,8 @@ section{padding:7rem 3.5rem;position:relative;z-index:2}
 .slabel{font-size:.65rem;letter-spacing:.28em;color:#B8902A;text-transform:uppercase;margin-bottom:.9rem;font-weight:700}
 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.4vw,3.3rem);font-weight:600;line-height:1.15;margin-bottom:1.4rem;color:#F2ECD8}
 .hr{width:44px;height:1px;background:var(--gold-d);margin:1.4rem 0}
+.btn-wa{display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 1.9rem;border:1.5px solid #25D366;color:#25D366;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .3s;font-family:'Manrope',sans-serif;background:rgba(37,211,102,.05)}
+.btn-wa:hover{background:rgba(37,211,102,.12);transform:translateY(-1px);box-shadow:0 6px 24px rgba(37,211,102,.15)}
 
 .prob{background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;margin-top:3.5rem;border:1px solid var(--bd)}
@@ -238,7 +245,24 @@ footer{padding:2rem 3.5rem;border-top:1px solid var(--bd);display:flex;align-ite
     <span class="lang-div">·</span>
     <button class="lang-btn" data-lang="en">ENG</button>
   </div>
-  <a href="https://t.me/mrmavrin" class="ntg" target="_blank">→ Telegram</a>
+  <div class="nav-actions">
+    <!-- Telegram personal -->
+    <a href="https://t.me/mrmavrin" class="nav-icon" target="_blank" title="Написать в Telegram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M21 5L2 12.5L9 13.5M21 5L15 20L9 13.5M21 5L9 13.5" stroke="#C9A84C" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M9 13.5L11 18.5L14 15" stroke="#C9A84C" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <span class="nav-icon-tooltip">Telegram</span>
+    </a>
+    <!-- WhatsApp personal -->
+    <a href="https://wa.me/34613569093" class="nav-icon nav-icon-wa" target="_blank" title="Написать в WhatsApp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.419A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="#C9A84C" stroke-width="1.3" fill="none"/>
+        <path d="M8.5 8.5c.167-.417.583-.583.833-.583h.667c.25 0 .5.167.583.417l.75 1.75c.083.25.017.542-.167.708l-.5.5c.417.833 1.292 1.708 2.125 2.125l.5-.5c.166-.184.458-.25.708-.167l1.75.75c.25.083.417.333.417.583v.667c0 .25-.167.667-.583.833-.833.334-3-.333-4.583-1.916C9 11.667 8.167 9.334 8.5 8.5z" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="nav-icon-tooltip">WhatsApp</span>
+    </a>
+  </div>
 </nav>
 
 <section class="hero">
@@ -251,6 +275,18 @@ footer{padding:2rem 3.5rem;border-top:1px solid var(--bd);display:flex;align-ite
     <div class="hbtns">
       <a href="https://t.me/excelerator_mrmavrin" class="btn-g" target="_blank" data-i18n="cta_btn">Подписаться на канал →</a>
       <a href="#solution" class="btn-o" data-i18n="btn_learn">Узнать подробнее</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:.8rem;margin-top:1.4rem;opacity:0;animation:fup .7s .95s forwards">
+      <span style="font-size:.68rem;letter-spacing:.1em;color:var(--text-dim);text-transform:uppercase;font-weight:500" data-i18n="direct_label">Или напишите напрямую:</span>
+      <a href="https://t.me/mrmavrin" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.7rem;color:var(--gold-l);text-decoration:none;font-weight:600;letter-spacing:.08em;transition:color .3s" onmouseover="this.style.color='#E8C97A'" onmouseout="this.style.color='var(--gold-l)'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M21 5L2 12.5L9 13.5M21 5L15 20L9 13.5M21 5L9 13.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        @mrmavrin
+      </a>
+      <span style="color:var(--text-dim);opacity:.4">·</span>
+      <a href="https://wa.me/34613569093" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.7rem;color:var(--gold-l);text-decoration:none;font-weight:600;letter-spacing:.08em;transition:color .3s" onmouseover="this.style.color='#E8C97A'" onmouseout="this.style.color='var(--gold-l)'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M20.5 3.5A12 12 0 0 0 3.5 20.5L2 22l1.5-1.5A12 12 0 1 0 20.5 3.5Z" stroke="currentColor" stroke-width="1.4"/></svg>
+        WhatsApp
+      </a>
     </div>
   </div>
 
@@ -495,7 +531,18 @@ footer{padding:2rem 3.5rem;border-top:1px solid var(--bd);display:flex;align-ite
   <p class="slabel rv" style="display:inline-block" data-i18n="cta_label">Следующий шаг</p>
   <h2 class="rv"><span data-i18n="cta_h2a">Готовы</span><br><em data-i18n="cta_h2b">автоматизировать?</em></h2>
   <p class="rv" data-i18n="cta_p">Подписывайтесь на канал — там я показываю как строю такие системы изнутри.</p>
-  <a href="https://t.me/excelerator_mrmavrin" class="btn-g rv rv1" target="_blank" style="margin:0 auto;display:inline-flex" data-i18n="cta_btn2">Открыть Telegram канал →</a>
+  <a href="https://t.me/mrmavrin" class="btn-g" target="_blank" style="display:inline-flex;align-items:center;gap:.7rem">
+      <svg width="15" height="15" viewBox="0 0 24 24"><path d="M21.8 2.2L1.4 10.1c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L8.5 16.3v2.8l2.4-2.3 4.8 3.5c.9.5 1.5.2 1.7-.8L21.8 3.7c.3-1.3-.5-1.9-1-.5z" fill="currentColor"/></svg>
+      <span data-i18n="cta_tg">Написать в Telegram</span>
+    </a>
+    <a href="https://wa.me/34613569093" class="btn-wa rv rv2" target="_blank" style="display:inline-flex;align-items:center;gap:.7rem">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.419A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" fill="currentColor" fill-opacity=".15" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M8.5 8.5c.167-.417.583-.583.833-.583h.667c.25 0 .5.167.583.417l.75 1.75c.083.25.017.542-.167.708l-.5.5c.417.833 1.292 1.708 2.125 2.125l.5-.5c.166-.184.458-.25.708-.167l1.75.75c.25.083.417.333.417.583v.667c0 .25-.167.667-.583.833-.833.334-3-.333-4.583-1.916C9 11.667 8.167 9.334 8.5 8.5z" fill="currentColor" stroke="currentColor" stroke-width=".5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span data-i18n="cta_wa">Написать в WhatsApp</span>
+    </a>
+    <p class="rv rv3" style="font-size:.68rem;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase;margin-top:.8rem;width:100%;text-align:center" data-i18n="cta_dm_note">✦ &nbsp; Это личные контакты — отвечу лично</p
 </section>
 
 <footer>
@@ -1005,7 +1052,9 @@ const LANGS = {
     b0_label:"Telegram", b1_label:"CRM", b2_label:"Календарь", b3_label:"Уведомления", b4_label:"Готово",
     snum2:"0 сек",
     ch_note_bold:"Канал ведётся на русском языке.", ch_note_text:"Но с помощью встроенного переводчика Telegram можно легко читать на любом языке — не выходя из мессенджера.",
-    ch_note_bold:"Канал ведётся на русском языке.", ch_note_text:"Но с помощью встроенного переводчика Telegram можно легко читать на любом языке — не выходя из мессенджера."
+    ch_note_bold:"Канал ведётся на русском языке.", ch_note_text:"Но с помощью встроенного переводчика Telegram можно легко читать на любом языке — не выходя из мессенджера.",
+    direct_label:"Или напишите напрямую:",
+    cta_tg:"Написать в Telegram", cta_wa:"Написать в WhatsApp", cta_dm_note:"✦   Это личные контакты — отвечу лично"
   },
   en: {
     nav_solution:"Solution", nav_proof:"How it works", nav_audience:"Who it is for",
@@ -1054,7 +1103,9 @@ const LANGS = {
     b0_label:"Telegram", b1_label:"CRM", b2_label:"Calendar", b3_label:"Notifications", b4_label:"Done",
     snum2:"0 sec",
     ch_note_bold:"Channel is in Russian.", ch_note_text:"But you can easily read it in any language using the built-in Telegram translator — without leaving the app.",
-    ch_note_bold:"Channel is in Russian.", ch_note_text:"But you can easily read it in any language using the built-in Telegram translator — without leaving the app."
+    ch_note_bold:"Channel is in Russian.", ch_note_text:"But you can easily read it in any language using the built-in Telegram translator — without leaving the app.",
+    direct_label:"Or write directly:",
+    cta_tg:"Message on Telegram", cta_wa:"Message on WhatsApp", cta_dm_note:"✦   These are personal contacts — I will reply personally"
   },
   es: {
     nav_solution:"Solución", nav_proof:"Cómo funciona", nav_audience:"Para quién",
@@ -1103,7 +1154,9 @@ const LANGS = {
     b0_label:"Telegram", b1_label:"CRM", b2_label:"Calendario", b3_label:"Notificaciones", b4_label:"Listo",
     snum2:"0 seg",
     ch_note_bold:"El canal está en ruso.", ch_note_text:"Pero puedes leerlo en cualquier idioma con el traductor integrado de Telegram — sin salir del mensajero.",
-    ch_note_bold:"El canal está en ruso.", ch_note_text:"Pero puedes leerlo en cualquier idioma con el traductor integrado de Telegram — sin salir del mensajero."
+    ch_note_bold:"El canal está en ruso.", ch_note_text:"Pero puedes leerlo en cualquier idioma con el traductor integrado de Telegram — sin salir del mensajero.",
+    direct_label:"O escríbeme directamente:",
+    cta_tg:"Escribir en Telegram", cta_wa:"Escribir en WhatsApp", cta_dm_note:"✦   Son contactos personales — respondo personalmente"
   }
 }
 let currentLang = 'ru';
